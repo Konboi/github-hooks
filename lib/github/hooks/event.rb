@@ -1,29 +1,19 @@
 module Github
-  module Hooks
+  class Hooks
     class Event
-      attr_accessor :evnets
+      attr_accessor :events
 
-      def initialize(options = {})
+      def initialize(&events)
         @events = {}
-
-        options.each do |k,v|
-          send("#{k}=",v)
-        end
       end
 
-      def on_push(&blk)
-        puts 'hoge'
+      def set(event_name, &blk)
+        @events[:"#{event_name}"] = blk
       end
 
-      def on_pull_request(&blk)
-      end
-
-      def on_comment(&blk)
-      end
-
-      def self.set(options = {}, &blk)
-        event = new(options)
-        event.instance_eval &blk
+      def on(event_name, *args)
+        instance_exec *args, &@events[:"#{event_name}"]
+        p event_name
       end
     end
   end

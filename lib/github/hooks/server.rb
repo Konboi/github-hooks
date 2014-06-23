@@ -1,9 +1,9 @@
 require 'rack'
 require 'json'
-require 'pp'
+require 'webrick'
 
 module Github
-  module Hooks
+  class Hooks
     class Server
       attr_reader :event
 
@@ -29,9 +29,13 @@ module Github
 
           [200, [], ['OK']]
         else
-          @event.send(:on_push)
+          @event.on('push', req)
           [400, [], ['BAD REQUEST']]
         end
+      end
+
+      def run(port)
+        Rack::Handler::WEBrick.run(self, :Port => port)
       end
     end
   end
