@@ -2,6 +2,10 @@
 
 Gtihub Event Proxy Server
 
+Set webhook content type `application/x-www-from-urlencoded`
+
+![img](http://i.gyazo.com/92aaaf4b8b5cb9d606f1265f02ff208e.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
