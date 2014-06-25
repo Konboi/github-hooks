@@ -24,7 +24,7 @@ module Github
         if req.request_method == 'POST' and payload
           event_name = env["X-Github-Event"]
 
-          if (event_name)
+          if event_name && @event.events[:"#{event_name}"]
             @event.on(event_name, req)
           end
 

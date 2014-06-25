@@ -50,5 +50,13 @@ describe 'Github::Hooks' do
       expect($pull_request).to eq('fuga')
     end
   end
+
+  context 'X-Github-Event is issues' do
+    it 'no event' do
+      post '/', {payload: {hoge: 'fuga'}}, {"X-Github-Event" => 'issues'}
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to eq("OK")
+    end
+  end
 end
 
