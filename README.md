@@ -22,14 +22,6 @@ Or install it yourself as:
 ```ruby
 require 'github/hooks'
 
-def hoge
-  puts 'hogehoge'
-end
-
-def fuga
-  puts 'fugafuga'
-end
-
 def foo(req)
   puts req
 end
