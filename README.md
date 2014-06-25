@@ -6,6 +6,16 @@ Set webhook content type `application/x-www-from-urlencoded`
 
 ![img](http://i.gyazo.com/92aaaf4b8b5cb9d606f1265f02ff208e.png)
 
+## Events
+
+You can use these events
+
+* `pull request`  => `on_pull_request`
+* `push`          => `on_push`
+* `issues`        => `on_issues`
+  * `issues` is create issue event
+* `issue_comment` => `on_issue_comment`
+
 ## Installation
 
 Add this line to your application's Gemfile:
