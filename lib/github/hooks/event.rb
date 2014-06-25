@@ -12,8 +12,17 @@ module Github
       end
 
       def on(event_name, *args)
-        instance_exec *args, &@events[:"#{event_name}"]
-        p event_name
+        begin
+          instance_exec *args, &@events[:"#{event_name}"]
+        rescue => e
+          info "#{e} - #{e.backtrace}"
+        end
+      end
+
+      private
+
+      def info(msg)
+        puts "#{Time.now.strftime('%H:%M:%S')} #{msg}"
       end
     end
   end

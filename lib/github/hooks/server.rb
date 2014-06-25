@@ -25,11 +25,11 @@ module Github
           event_name = env["X-Github-Event"]
 
           if (event_name)
+            @event.on(event_name, req)
           end
 
           [200, [], ['OK']]
         else
-          @event.on('push', req)
           [400, [], ['BAD REQUEST']]
         end
       end

@@ -9,18 +9,18 @@ module Github
     def initialize(options = {})
       @event  = Event.new
       @server = Server.new(@event)
-      @port   = 9876
+      @port   = 8880
 
       options.each do |k, v|
         send("#{k}=", v)
       end
     end
 
-    def self.start(options = {}, &blk)
+    def self.set(options = {}, &blk)
       hook = new(options)
       hook.instance_eval &blk
 
-      hook.server.run(hook.port)
+      hook
     end
 
     def on_push(&blk)
@@ -36,11 +36,11 @@ module Github
     end
 
     def on_issues(&blk)
-      @event.set('issues', &blk)
+      @event.set('commit_comment', &blk)
     end
 
     def on_issue_comment(&blk)
-      @event.set('issue_comment', &blk)
+      @event.set('commit_comment', &blk)
     end
   end
 end
