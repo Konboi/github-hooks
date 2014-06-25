@@ -12,8 +12,7 @@ def foo(req)
   puts req
 end
 
-Github::Hooks.start do |hook|
-  hook.port = 8880
+hooks = Github::Hooks.set do |hook|
   hook.on_push do |request|
     puts 'push'
   end
@@ -22,7 +21,9 @@ Github::Hooks.start do |hook|
     puts 'pull req'
   end
 
-  hook.on_comment do |request|
+  hook.on_issue_comment do |request|
     foo
   end
 end
+
+Rack::Handler::WEBrick.run(hooks.server, :Port => hooks.port)
