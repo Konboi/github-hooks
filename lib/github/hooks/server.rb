@@ -19,10 +19,8 @@ module Github
           [400, [], ['BAD REQUEST']]
         end
 
-        # TODO
-        # event method
         if req.request_method == 'POST' and payload
-          event_name = env["X-Github-Event"]
+          event_name = env["HTTP_X_GITHUB_EVENT"]
 
           if event_name && @event.events[:"#{event_name}"]
             @event.on(event_name, req)
