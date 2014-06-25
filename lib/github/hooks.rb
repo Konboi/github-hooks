@@ -36,11 +36,11 @@ module Github
     end
 
     def on_issues(&blk)
-      @event.set('commit_comment', &blk)
+      @event.set('issues', &blk)
     end
 
     def on_issue_comment(&blk)
-      @event.set('commit_comment', &blk)
+      @event.set('issue_comment', &blk)
     end
   end
 end
