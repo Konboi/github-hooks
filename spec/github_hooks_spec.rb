@@ -34,7 +34,7 @@ describe 'Github::Hooks' do
   context 'X-Github-Event is push' do
     it '$counter increment' do
       expect($counter).to eq(0)
-      post '/', {payload: {hoge: 'fuga'}}, {"X-Github-Event" => 'push'}
+      post '/', {payload: {hoge: 'fuga'}}, {"HTTP_X_GITHUB_EVENT" => 'push'}
       expect(last_response.status).to eq(200)
       expect(last_response.body).to eq("OK")
       expect($counter).to eq(1)
@@ -44,7 +44,7 @@ describe 'Github::Hooks' do
   context 'X-GitHub-Event is pull-request' do
     it 'update pull_request' do
       expect($pull_request).to eq('')
-      post '/', {payload: {hoge: 'fuga'}}, {"X-Github-Event" => 'pull_request'}
+      post '/', {payload: {hoge: 'fuga'}}, {"HTTP_X_GITHUB_EVENT" => 'pull_request'}
       expect(last_response.status).to eq(200)
       expect(last_response.body).to eq("OK")
       expect($pull_request).to eq('fuga')
@@ -59,4 +59,3 @@ describe 'Github::Hooks' do
     end
   end
 end
-
