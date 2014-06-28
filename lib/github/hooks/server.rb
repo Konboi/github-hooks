@@ -1,6 +1,5 @@
 require 'rack'
 require 'json'
-require 'webrick'
 
 module Github
   class Hooks
@@ -30,10 +29,6 @@ module Github
         else
           [400, [], ['BAD REQUEST']]
         end
-      end
-
-      def run(port)
-        Rack::Handler::WEBrick.run(self, :Port => port)
       end
     end
   end

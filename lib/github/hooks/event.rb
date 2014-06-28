@@ -3,7 +3,7 @@ module Github
     class Event
       attr_accessor :events
 
-      def initialize(&events)
+      def initialize
         @events = {}
       end
 
