@@ -1,10 +1,13 @@
 require 'github/hooks'
+require 'json'
 
 def foo(req)
-  puts req
+  payload = JSON.parse(req["payload"])
+  puts "repository name:" + payload["repository"]["name"]
 end
 
 hooks = Github::Hooks.set do |hook|
+  hook.port = 4567
   hook.on_push do |request|
     puts 'push'
   end
