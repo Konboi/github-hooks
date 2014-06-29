@@ -8,14 +8,13 @@ Gem::Specification.new do |spec|
   spec.version       = Github::Hooks::VERSION
   spec.authors       = ["Konboi"]
   spec.email         = ["ryosuke.yabuki@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{github-hooks is tools for github hooks. github-hooks can create hook job and hook event easily.}
+  spec.homepage      = "https://github.com/Konboi/github-hooks"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.test_files    = spec.files.grep(%r{^(spec)/})
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rack"
