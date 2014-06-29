@@ -14,7 +14,7 @@ hooks = Github::Hooks.set do |hook|
   end
 
   hook.on_issue_comment do |request|
-    foo
+    foo(request)
   end
 end
 
