@@ -3,7 +3,7 @@ require "rack/test"
 require "github/hooks"
 
 def app
-  event =Github::Hooks::Event.new
+  event = Github::Hooks::Event.new
   Github::Hooks::Server.new(event)
 end
 
