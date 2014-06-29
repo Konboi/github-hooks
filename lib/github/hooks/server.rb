@@ -15,6 +15,7 @@ module Github
         begin
           payload = req.params["payload"]
         rescue => e
+          info "#{e} - #{e.backtrace}"
           [400, [], ['BAD REQUEST']]
         end
 
@@ -29,6 +30,12 @@ module Github
         else
           [400, [], ['BAD REQUEST']]
         end
+      end
+
+      private
+
+      def info(msg)
+        puts "#{Time.now.strftime('%H:%M:%S')} #{msg}"
       end
     end
   end
