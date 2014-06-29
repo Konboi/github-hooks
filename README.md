@@ -41,6 +41,7 @@ def foo(req)
 end
 
 hooks = Github::Hooks.set do |hook|
+  hook.port = 9876
   hook.on_push do |request|
     puts 'push'
   end
