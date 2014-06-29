@@ -1,5 +1,4 @@
 require 'rack'
-require 'json'
 
 module Github
   class Hooks
