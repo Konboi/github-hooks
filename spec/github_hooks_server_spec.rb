@@ -7,7 +7,7 @@ def app
   Github::Hooks::Server.new(event)
 end
 
-describe 'Github::Hools::Reciver' do
+describe 'Github::Hooks::Server' do
   include Rack::Test::Methods
 
   describe 'GET' do
