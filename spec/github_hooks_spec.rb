@@ -25,7 +25,7 @@ describe 'Github::Hooks' do
       end
 
       hook.on_pull_request do |request|
-        p_r(request["payload"]["hoge"])
+        p_r(request["hoge"])
       end
     end
     hooks.server

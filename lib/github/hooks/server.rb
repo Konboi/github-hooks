@@ -22,7 +22,7 @@ module Github
           event_name = env["HTTP_X_GITHUB_EVENT"]
 
           if event_name && @event.events[:"#{event_name}"]
-            @event.on(event_name, JSON.parse(payload))
+            @event.on(event_name, payload)
           end
 
           [200, [], ['OK']]
